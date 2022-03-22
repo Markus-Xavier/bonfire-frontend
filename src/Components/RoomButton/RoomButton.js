@@ -6,9 +6,23 @@ export default function RoomButton({ isAuthenticated }) {
   const [requestJoinRoom, setRequestJoinRoom] = useState(false);
   const accessToken = useGetAccessToken(requestJoinRoom);
 
+  // Delete fetch call out of this file 
+  const getData = async (accessToken) => {
+    if(accessToken) {
+      console.log(accessToken);
+      const response = await fetch('http://localhost:4000/api/private', {
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    });
+    const parsedResponse = await response.json()
+    console.log(parsedResponse);
+    }
+  }
+
   useEffect(() => {
     if (accessToken) {
-      accessToken.then(createSocketConnection)
+      accessToken.then(getData)
     }
   }, [accessToken, requestJoinRoom]);
 

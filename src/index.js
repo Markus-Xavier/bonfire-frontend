@@ -10,6 +10,7 @@ ReactDOM.render(
   domain="dev-c-6l4ag3.us.auth0.com"
   clientId="GBlIPoi3KEZTi2QwSMR9H2pCvgtKY6VE"
   redirectUri={window.location.origin}
+  audience="https://bonfire/api"
 >
   <App />
 </Auth0Provider>,
